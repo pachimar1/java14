@@ -1,17 +1,17 @@
 package ru.netology.javaqa.homework.fourteen;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 class Game {
-    private List<Player> players;
+    private HashMap<String,Player> players;
 
     public Game() {
-        players = new ArrayList<>();
+        players = new HashMap<>();
     }
 
     public void register(Player player) {
-        players.add(player);
+
+        players.put(player.getName(), player);
     }
 
     public int round(String playerName1, String playerName2) throws NotRegisteredException{
@@ -32,11 +32,6 @@ class Game {
     }
 
     private Player findPlayerByName(String playerName) {
-        for (Player player : players) {
-            if (player.getName().equals(playerName)) {
-                return player;
-            }
-        }
-        return null;
+        return players.get(playerName);
     }
 }
